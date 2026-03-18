@@ -312,6 +312,10 @@ body::-webkit-scrollbar { display: none; }
     z-index: 2;
 }
 
+.team-member img.team-photo-nikki {
+    transform: translateY(24px) scale(1.08) rotate(-90deg);
+}
+
 .team-info {
     position: absolute;
     top: -10px;
@@ -396,6 +400,10 @@ body::-webkit-scrollbar { display: none; }
         opacity: 1;
         transform: translateY(0) scale(1);
         filter: blur(0);
+}
+
+.team-member img.team-photo-nikki.in-view {
+    transform: translateY(0) scale(1) rotate(-90deg);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -749,6 +757,24 @@ body::-webkit-scrollbar { display: none; }
     align-items: baseline;
 }
 
+.nav-toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0.25rem;
+    margin-left: auto;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #4b1e04;
+    margin: 5px 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
 .link:hover {
     text-decoration: underline;
     color:#4b1e04;
@@ -834,6 +860,95 @@ body::-webkit-scrollbar { display: none; }
         width: auto;
         max-width: none;
         transform: translateY(-8px);
+    }
+}
+
+@media (max-width: 900px) {
+    .header {
+        align-items: center;
+        gap: 1rem;
+        padding: 0.85rem 1rem;
+    }
+
+    .teamtitle {
+        padding-right: 0;
+        font-size: 1.2rem;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        padding: 0.8rem 1rem 1rem;
+    }
+
+    .header.menu-open .nav {
+        display: flex;
+    }
+
+    .header.menu-open .nav-toggle span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .header.menu-open .nav-toggle span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .header.menu-open .nav-toggle span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .link,
+    .donate-nav {
+        width: 100%;
+        text-align: left;
+        padding: 0.65rem 0;
+    }
+
+    .dropdown {
+        width: 100%;
+    }
+
+    .dropdown::before,
+    .dropdown-menu::before {
+        content: none;
+    }
+
+    .dropdown-menu {
+        position: static;
+        left: auto;
+        right: auto;
+        top: auto;
+        margin-top: 0.35rem;
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        padding: 1rem;
+        border-radius: 10px;
+        display: none;
+        opacity: 1;
+        pointer-events: auto;
+        transform: none;
+        box-sizing: border-box;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: none;
+    }
+
+    .dropdown.is-open .dropdown-menu {
+        display: flex;
     }
 }
 
@@ -1048,6 +1163,71 @@ body::-webkit-scrollbar { display: none; }
     max-width: 90vw;
     text-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
 } 
+
+@media (max-width: 900px) {
+    html, body {
+        scroll-snap-type: none;
+    }
+
+    .slides {
+        min-height: 100dvh;
+        height: auto;
+    }
+
+    .page-homepage .slide2,
+    .page-homepage .slide3,
+    .page-homepage .slide4 {
+        background-attachment: scroll;
+    }
+
+    .hero-text {
+        margin-top: 5rem;
+        transform: none;
+    }
+
+    .hero-text h1 {
+        font-size: clamp(2.2rem, 12vw, 3.5rem);
+        padding: 0 1rem;
+    }
+
+    .button-group {
+        transform: none;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+    }
+
+    .who-we-are {
+        padding: 1rem;
+        width: min(100%, 360px);
+        letter-spacing: 1px;
+        font-size: 1.15rem;
+    }
+
+    .who-we-are-container::before {
+        display: none;
+    }
+
+    .who-we-are-container:hover .who-we-are {
+        transform: none;
+    }
+
+    .who-we-are-text {
+        max-width: min(92vw, 560px);
+        padding: 1rem;
+        transform: none;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .who-we-are-container:hover .who-we-are-text {
+        transform: none;
+    }
+
+    .hover-zones {
+        display: none;
+    }
+}
 
 .page-homepage .hero-text h1 {
     opacity: 0;
@@ -1923,6 +2103,10 @@ body::-webkit-scrollbar { display: none; }
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: clamp(1.2rem, 2.4vw, 1.7rem);
     font-weight: 700;
+}
+
+.page-socials .contact-address-row {
+    margin-top: 0.75rem !important;
 }
 
 .page-socials .contact-simple a {
